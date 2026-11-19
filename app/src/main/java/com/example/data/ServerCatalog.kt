@@ -1,0 +1,162 @@
+package com.example.data
+
+object ServerCatalog {
+    val builtInServers: List<VpnServer> = listOf(
+        VpnServer(
+            id = "us-nyc",
+            countryName = "United States",
+            cityName = "New York",
+            countryCode = "US",
+            flagEmoji = "🇺🇸",
+            host = "1.1.1.1",
+            probePort = 443,
+            wgPort = 51820,
+            ovpnPort = 1194,
+            region = ServerRegion.AMERICAS,
+            loadPercent = 24
+        ),
+        VpnServer(
+            id = "us-lax",
+            countryName = "United States",
+            cityName = "Los Angeles",
+            countryCode = "US",
+            flagEmoji = "🇺🇸",
+            host = "8.8.8.8",
+            probePort = 443,
+            wgPort = 51820,
+            ovpnPort = 1194,
+            region = ServerRegion.AMERICAS,
+            loadPercent = 31
+        ),
+        VpnServer(
+            id = "ca-tor",
+            countryName = "Canada",
+            cityName = "Toronto",
+            countryCode = "CA",
+            flagEmoji = "🇨🇦",
+            host = "9.9.9.9",
+            probePort = 443,
+            wgPort = 51820,
+            ovpnPort = 1194,
+            region = ServerRegion.AMERICAS,
+            loadPercent = 18
+        ),
+        VpnServer(
+            id = "br-gru",
+            countryName = "Brazil",
+            cityName = "Sao Paulo",
+            countryCode = "BR",
+            flagEmoji = "🇧🇷",
+            host = "208.67.222.222",
+            probePort = 443,
+            wgPort = 51820,
+            ovpnPort = 1194,
+            region = ServerRegion.AMERICAS,
+            loadPercent = 42
+        ),
+        VpnServer(
+            id = "uk-lon",
+            countryName = "United Kingdom",
+            cityName = "London",
+            countryCode = "GB",
+            flagEmoji = "🇬🇧",
+            host = "1.0.0.1",
+            probePort = 443,
+            wgPort = 51820,
+            ovpnPort = 1194,
+            region = ServerRegion.EUROPE,
+            loadPercent = 29
+        ),
+        VpnServer(
+            id = "de-fra",
+            countryName = "Germany",
+            cityName = "Frankfurt",
+            countryCode = "DE",
+            flagEmoji = "🇩🇪",
+            host = "94.140.14.14",
+            probePort = 443,
+            wgPort = 51820,
+            ovpnPort = 1194,
+            region = ServerRegion.EUROPE,
+            loadPercent = 35
+        ),
+        VpnServer(
+            id = "nl-ams",
+            countryName = "Netherlands",
+            cityName = "Amsterdam",
+            countryCode = "NL",
+            flagEmoji = "🇳🇱",
+            host = "94.140.15.15",
+            probePort = 443,
+            wgPort = 51820,
+            ovpnPort = 1194,
+            region = ServerRegion.EUROPE,
+            loadPercent = 21
+        ),
+        VpnServer(
+            id = "ch-zrh",
+            countryName = "Switzerland",
+            cityName = "Zurich",
+            countryCode = "CH",
+            flagEmoji = "🇨🇭",
+            host = "149.112.112.112",
+            probePort = 443,
+            wgPort = 51820,
+            ovpnPort = 1194,
+            region = ServerRegion.EUROPE,
+            loadPercent = 15
+        ),
+        VpnServer(
+            id = "fr-par",
+            countryName = "France",
+            cityName = "Paris",
+            countryCode = "FR",
+            flagEmoji = "🇫🇷",
+            host = "8.8.4.4",
+            probePort = 443,
+            wgPort = 51820,
+            ovpnPort = 1194,
+            region = ServerRegion.EUROPE,
+            loadPercent = 38
+        ),
+        VpnServer(
+            id = "jp-tyo",
+            countryName = "Japan",
+            cityName = "Tokyo",
+            countryCode = "JP",
+            flagEmoji = "🇯🇵",
+            host = "1.1.1.1",
+            probePort = 853,
+            wgPort = 51820,
+            ovpnPort = 1194,
+            region = ServerRegion.ASIA_PACIFIC,
+            loadPercent = 27
+        ),
+        VpnServer(
+            id = "sg-sin",
+            countryName = "Singapore",
+            cityName = "Singapore",
+            countryCode = "SG",
+            flagEmoji = "🇸🇬",
+            host = "9.9.9.9",
+            probePort = 853,
+            wgPort = 51820,
+            ovpnPort = 1194,
+            region = ServerRegion.ASIA_PACIFIC,
+            loadPercent = 33
+        ),
+        VpnServer(
+            id = "au-syd",
+            countryName = "Australia",
+            cityName = "Sydney",
+            countryCode = "AU",
+            flagEmoji = "🇦🇺",
+            host = "1.0.0.1",
+            probePort = 853,
+            wgPort = 51820,
+            ovpnPort = 1194,
+            region = ServerRegion.ASIA_PACIFIC,
+            loadPercent = 22
+        )
+    )
+}
