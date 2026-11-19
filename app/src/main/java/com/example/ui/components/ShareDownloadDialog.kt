@@ -9,11 +9,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.OpenInNew
 import androidx.compose.material.icons.rounded.ContentCopy
 import androidx.compose.material.icons.rounded.Send
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -45,7 +48,7 @@ fun ShareDownloadDialog(
     onDismiss: () -> Unit
 ) {
     val context = LocalContext.current
-    var linkText by remember { mutableStateOf(ShareUtils.DEFAULT_DOWNLOAD_LINK) }
+    var linkText by remember { mutableStateOf(ShareUtils.GITHUB_RELEASES_LATEST) }
     var copied by remember { mutableStateOf(false) }
 
     AlertDialog(
@@ -53,18 +56,45 @@ fun ShareDownloadDialog(
         containerColor = DeepPlum,
         title = {
             Text(
-                text = "Send App Download Link",
+                text = "Send APK Download Link",
                 style = MaterialTheme.typography.titleLarge,
                 color = TextPrimary
             )
         },
         text = {
-            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 Text(
-                    text = "Share the VioletTunnel app link or paste your hosted APK download URL before sending.",
+                    text = "Share or open the GitHub Releases APK link for 67kmobile/Deepa-sahu.",
                     style = MaterialTheme.typography.bodyMedium,
                     color = TextSecondary
                 )
+
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    FilterChip(
+                        selected = linkText == ShareUtils.GITHUB_RELEASES_LATEST,
+                        onClick = {
+                            linkText = ShareUtils.GITHUB_RELEASES_LATEST
+                            copied = false
+                        },
+                        label = { Text("Latest Release") },
+                        colors = FilterChipDefaults.filterChipColors(
+                            selectedContainerColor = NeonOrchid.copy(alpha = 0.35f),
+                            selectedLabelColor = LavenderGlow
+                        )
+                    )
+                    FilterChip(
+                        selected = linkText == ShareUtils.GITHUB_RELEASES_ALL,
+                        onClick = {
+                            linkText = ShareUtils.GITHUB_RELEASES_ALL
+                            copied = false
+                        },
+                        label = { Text("All Releases") },
+                        colors = FilterChipDefaults.filterChipColors(
+                            selectedContainerColor = NeonOrchid.copy(alpha = 0.35f),
+                            selectedLabelColor = LavenderGlow
+                        )
+                    )
+                }
 
                 OutlinedTextField(
                     value = linkText,
@@ -72,7 +102,7 @@ fun ShareDownloadDialog(
                         linkText = it
                         copied = false
                     },
-                    label = { Text("Download / Share URL") },
+                    label = { Text("APK / Release URL") },
                     singleLine = true,
                     textStyle = MaterialTheme.typography.labelSmall,
                     colors = OutlinedTextFieldDefaults.colors(
@@ -109,7 +139,7 @@ fun ShareDownloadDialog(
                             modifier = Modifier.size(16.dp)
                         )
                         Spacer(modifier = Modifier.width(6.dp))
-                        Text(if (copied) "Copied" else "Copy Link")
+                        Text(if (copied) "Copied" else "Copy")
                     }
 
                     Button(
@@ -130,6 +160,23 @@ fun ShareDownloadDialog(
                         Spacer(modifier = Modifier.width(6.dp))
                         Text("Send")
                     }
+                }
+
+                OutlinedButton(
+                    onClick = { ShareUtils.openDownloadPage(context, linkText) },
+                    border = BorderStroke(1.dp, ElectricAmethyst.copy(alpha = 0.55f)),
+                    colors = ButtonDefaults.outlinedButtonColors(contentColor = ElectricAmethyst),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .testTag("open_releases_page_button")
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Rounded.OpenInNew,
+                        contentDescription = null,
+                        modifier = Modifier.size(16.dp)
+                    )
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Text("Open Releases Page")
                 }
             }
         },
